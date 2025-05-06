@@ -40,18 +40,23 @@ pipeline {
             }
         }
 
-        // Optional deployment stage
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploying to production server...'
-                // Example: Copy JAR to server, or call deployment script
-                // sh 'scp target/app.jar user@host:/path'
-                // sh 'ssh user@host "systemctl restart app-service"'
-            }
-        }
+
+   stage('Build Docker Image') {
+    steps {
+        sh 'docker build -t my-spring-app .'
+    }
+}
+
+stage('Run App in Docker') {
+    steps {
+       sh  'docker rm -f my-spring-app-container || true'
+	sh 'docker run -d --name my-spring-app-container -p 8080:8080 my-spring-app'
+
+        sh 'sleep 5'
+        sh 'curl http://localhost:8080'
+    }
+}
+
     }
 
 }
