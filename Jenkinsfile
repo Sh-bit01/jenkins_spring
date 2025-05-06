@@ -50,7 +50,7 @@ pipeline {
 stage('Run App in Docker') {
     steps {
        sh  'docker rm -f my-spring-app-container || true'
-	sh 'docker run -d --name my-spring-app-container -p 8080:8080 my-spring-app'
+	sh 'docker run -d --name my-spring-app-container -p 8888:8888 my-spring-app'
 
         sh 'sleep 5'
         sh 'curl http://localhost:8080'
