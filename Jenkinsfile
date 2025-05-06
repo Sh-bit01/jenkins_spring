@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-org/your-spring-boot-repo.git'
+                git branch: 'main', url: 'https://github.com/Sh-bit01/jenkins_spring.git'
             }
         }
 
