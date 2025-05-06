@@ -2,8 +2,8 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY target/*.jar .
+COPY target/app.jar .
 
 EXPOSE 8888
 
-CMD ["java", "-jar", "/app/*.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
