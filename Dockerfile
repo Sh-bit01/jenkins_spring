@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY target/app.jar .
+COPY target/app.jar /app/
 
 EXPOSE 8888
 
